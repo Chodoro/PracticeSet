@@ -123,6 +123,31 @@ define('PI', '3.1416');
     <h3>Answer:
     <pre><?php var_dump($chunkedArray); ?></pre></h3>
 
+    <h2>Practice Set 1</h2>
+    <form method="POST">
+        Side 1: <input type="number" name="side1" required><br><br>
+        Side 2: <input type="number" name="side2" required><br><br>
+        Side 3: <input type="number" name="side3" required><br><br>
+        <input type="submit" name="calculate" value="Calculate Area">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $side1 = floatval($_POST['side1']);
+        $side2 = floatval($_POST['side2']);
+        $side3 = floatval($_POST['side3']);
+
+        $s = ($side1 + $side2 + $side3) / 2;
+
+        $areaSquared = $s * ($s - $side1) * ($s - $side2) * ($s - $side3);
+        
+
+        $area = pow($areaSquared, 0.5);
+        echo "<h3>Triangle Area: " . number_format($area, 3) . " square units</h3>";
+        }
+
+    ?>
+
     <h2>Practice Set 2</h2>
     <h3>List of Fruits:</h3>
     <ol>
@@ -161,29 +186,55 @@ define('PI', '3.1416');
     ?>
     </ul>
 
-    <h2>Calculate Triangle Area using Heron's Formula</h2>
-    <form method="POST">
-        Side 1: <input type="number" name="side1" required><br><br>
-        Side 2: <input type="number" name="side2" required><br><br>
-        Side 3: <input type="number" name="side3" required><br><br>
-        <input type="submit" name="calculate" value="Calculate Area">
-    </form>
+    <h2>Practice Set 1, Part 2</h2>
+        <?php
 
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $side1 = floatval($_POST['side1']);
-        $side2 = floatval($_POST['side2']);
-        $side3 = floatval($_POST['side3']);
-
-        $s = ($side1 + $side2 + $side3) / 2;
-
-        $areaSquared = $s * ($s - $side1) * ($s - $side2) * ($s - $side3);
-        
-
-        $area = pow($areaSquared, 0.5);
-        echo "<h3>Triangle Area: " . number_format($area, 3) . " square units</h3>";
+    /**
+     * Get total price of all items in cart
+     * @param array $items list of items with 'price'
+     * @return float total price
+     */
+    function getTotalPrice(array $items): float {
+        $total = 0;
+        foreach ($items as $item) {
+            $total += $item['price'];
         }
+        return $total;
+    }
+
+    /**
+     * remove spaces and make string lowercase
+     * @param string $text input string
+     * @return string modified string
+     */
+    function cleanString(string $text): string {
+        return strtolower(str_replace(' ', '', $text));
+    }
+
+    /**
+     * Check if even or odd
+     * @param int $num Number to check
+     * @return string Even or odd result
+     */
+    function isEvenOrOdd(int $num): string {
+        return ($num % 2 === 0) ? "The number $num is even." : "The number $num is odd.";
+    }
+
+    $items = [
+        ['name' => 'Widget A', 'price' => 10],
+        ['name' => 'Widget B', 'price' => 15],
+        ['name' => 'Widget C', 'price' => 20],
+    ];
+
+    echo "Total price: $" . getTotalPrice($items) . "\n";
+
+    $originalString = "This is a poorly written program with little structure and readability.";
+    echo "Modified string: " . cleanString($originalString) . "\n";
+
+    $number = 42;
+    echo isEvenOrOdd($number) . "\n";
 
     ?>
+
 </body>
 </html>
