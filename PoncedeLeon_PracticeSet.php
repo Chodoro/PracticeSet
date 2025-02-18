@@ -13,13 +13,35 @@ $Name = 'Brad';
 $Age = 40;
 $hasKids = 'true';
 $cashOnhand = 10.5;
+
 $numbers = [1, 2, 3, 4, 5];
+
 $colors = ["red", "green", "blue"];
-$Colors = [
-    1=> 'red',
-    2=> 'green',
-    3=> 'blue',
-]
+
+$Colors = [1=> 'red', 2=> 'green', 3=> 'blue'];
+
+$hex = ['red' => '#f00', 'green' => '#0f0', 'blue' => '#00f'];
+
+$matrix = [[1,2,3], [4,5,6], [7,8,9]];
+
+$person1 = ['first_name' => 'Maeve', 'last_name' => 'Reid', 'emai;' => 'reid@gmail.com'];
+
+$people = [
+    $person1,
+    [
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'email' => 'john@gmail.com'
+    ],
+    [
+        'first_name' => 'Jane',
+        'last_name' => 'Doe',
+        'email' => 'jane@gmail.com'
+    ],
+];
+
+$fruits = ['kiwi', 'apple, banana', 'orange', 'grape', 'mango', 'raspberry'];
+$chunkedArray = array_chunk($fruits, 2);
 
 define('HOST', 'localhost');
 define('PI', '3.1416');
@@ -75,7 +97,93 @@ define('PI', '3.1416');
     <h3>Answer: "first_name", "last_name", and "age"</h3>
 
     <h2>Question 10: In PHP, how will you change the green into white in<code>$colors array?</code>?</h2>
+    <h3>Answer: $colors[2] = 'white';</h3>
+
+    <h2>Question 11: What is the output of <code>echo $hex['red'];</code>?</h2>
     <h3>Answer:
-    <pre><?php echo HOST; ?></pre></h3>
+    <pre><?php echo $hex['red']; ?></pre></h3>
+
+    <h2>Question 11: What is the output of <code>echo $hex['red'];</code>?</h2>
+    <h3>Answer:
+    <pre><?php echo $hex['red']; ?></pre></h3>
+
+    <h2>Question 12: What is the output of <code>echo $matrix[1][2];</code>?</h2>
+    <h3>Answer:
+    <pre><?php echo  $matrix[1][2]; ?></pre></h3>
+
+    <h2>Question 13: What is the output of <code>echo $people[0]['first_name'];</code>?</h2>
+    <h3>Answer:
+    <pre><?php echo  $people[0]['first_name']; ?></pre></h3>
+
+    <h2>Question 14: What is the output of <code>echo $people[2]['email'];</code>?</h2>
+    <h3>Answer:
+    <pre><?php echo  $people[2]['email']; ?></pre></h3>
+
+    <h2>Question 15: What is the output of <code>var_dump($chunkedArray);</code>?</h2>
+    <h3>Answer:
+    <pre><?php var_dump($chunkedArray); ?></pre></h3>
+
+    <h2>Practice Set 2</h2>
+    <h3>List of Fruits:</h3>
+    <ol>
+    <?php
+    $fruits = ["Apple", "Banana", "Orange", "Grape", "Mango"];
+
+    for ($i = 0; $i < count($fruits); $i++) {
+        echo "<li>" . $fruits[$i] . "</li>";
+    }
+    ?>
+    </ol>
+
+    <h2>Practice Set 3</h2>
+    <h3>Even Numbers from Matrix:</h3>
+    <ul>
+    <?php
+    $matrix = [
+        [12, 23, 34],
+        [45, 55, 62],
+        [71, 84, 90],
+    ];
+
+    $row = 0;
+
+    while ($row < count($matrix)) {
+        $col = 0;
+
+        while ($col < count($matrix[$row])) {
+            if ($matrix[$row][$col] % 2 == 0) {
+                echo "<li>" . $matrix[$row][$col] . "</li>";
+            }
+            $col++;
+        }
+        $row++;
+    }
+    ?>
+    </ul>
+
+    <h2>Calculate Triangle Area using Heron's Formula</h2>
+    <form method="POST">
+        Side 1: <input type="number" name="side1" required><br><br>
+        Side 2: <input type="number" name="side2" required><br><br>
+        Side 3: <input type="number" name="side3" required><br><br>
+        <input type="submit" name="calculate" value="Calculate Area">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $side1 = floatval($_POST['side1']);
+        $side2 = floatval($_POST['side2']);
+        $side3 = floatval($_POST['side3']);
+
+        $s = ($side1 + $side2 + $side3) / 2;
+
+        $areaSquared = $s * ($s - $side1) * ($s - $side2) * ($s - $side3);
+        
+
+        $area = pow($areaSquared, 0.5);
+        echo "<h3>Triangle Area: " . number_format($area, 3) . " square units</h3>";
+        }
+
+    ?>
 </body>
 </html>
