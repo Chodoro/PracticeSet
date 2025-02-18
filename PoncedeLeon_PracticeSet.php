@@ -1,14 +1,12 @@
 <?php
-    Class Person{
-        public $name;
-        public $age;
-    }
-    
-    $person = new Person();
-    $person ->name = 'Alice';
-    $person ->age = 25;
-    
-    print_r($person);
+class Person {
+    public $name;
+    public $age;
+}
+
+$person = new Person();
+$person->name = 'Alice';
+$person->age = 25;
 ?>
 
 <!DOCTYPE html>
@@ -19,14 +17,12 @@
     <title>Practice Sets</title>
 </head>
 <body>
-    <h1>Question 1: What is the output of "echo print_r($person);"?</h1>
-    <h2>Answer: 
-        Person Object
-    (
-        [name] => Alice
-        [age] => 25
-    )
-    </h2>
-    
+    <h2>Question 1: What is the output of <code>print_r($person, true);</code>?</h2>
+    <h3>Answer:
+    <pre><?php echo print_r($person, true); ?></pre></h3>
+
+    <h2>Question 2: What is the output of <code>var_dump($person);</code>?</h2>
+    <h3>Answer:
+    <pre><?php var_dump($person); ?></pre></h3>
 </body>
 </html>
