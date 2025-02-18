@@ -13,10 +13,15 @@ $Name = 'Brad';
 $Age = 40;
 $hasKids = 'true';
 $cashOnhand = 10.5;
+$numbers = [1, 2, 3, 4, 5];
+$colors = ["red", "green", "blue"];
+$Colors = [
+    1=> 'red',
+    2=> 'green',
+    3=> 'blue',
+]
 
-define("CONSTANT_NAME", "constant_value");
 define('HOST', 'localhost');
-define('USER', 'root');
 define('PI', '3.1416');
 
 ?>
@@ -53,8 +58,24 @@ define('PI', '3.1416');
     <h3>Answer:
     <pre><?php echo HOST; ?></pre></h3>
 
-    <h2>Question 6: How do you define in PHP the variable PI with value 3.1416?</code>?</h2>
+    <h2>Question 6: How do you define in PHP the variable PI with value 3.1416?</h2>
     <h3>Answer:
     <pre><?php echo PI; ?></pre></h3>
+
+    <h2>Question 7: What is the output of <code>echo $numbers[3] + $numbers[4];</code>?</h2>
+    <h3>Answer:
+    <pre><?php echo $numbers[3] + $numbers[4]; ?></pre></h3>
+
+    <h2>Question 8: What is the output of <code>echo $colors[3];</code>?</h2>
+    <h3>Answer:
+    <pre><?php echo $colors[3]; ?></pre></h3> 
+    <h3>It returns an error because there are only 3 elements in the array and its highest index is 2</h3>
+
+    <h2>Question 9: What are the keys in $Person array?</h2>
+    <h3>Answer: "first_name", "last_name", and "age"</h3>
+
+    <h2>Question 10: In PHP, how will you change the green into white in<code>$colors array?</code>?</h2>
+    <h3>Answer:
+    <pre><?php echo HOST; ?></pre></h3>
 </body>
 </html>
